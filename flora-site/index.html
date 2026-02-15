@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>🌺 Flora Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:#000;color:#fff;}
+
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:30px 10%;
+  border-bottom:1px solid #111;
+}
+nav a{
+  margin-left:30px;
+  color:#aaa;
+  text-decoration:none;
+  position:relative;
+}
+nav a::after{
+  content:"";
+  position:absolute;
+  bottom:-5px;
+  left:0;
+  width:0;
+  height:2px;
+  background:#fff;
+  transition:.3s;
+}
+nav a:hover::after{width:100%;}
+nav a:hover{color:#fff;}
+
+.container{
+  width:1350px;
+  margin:100px auto;
+}
+
+/* BANNER */
+.banner{border-radius:25px;overflow:hidden;}
+.banner img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+}
+
+/* HERO */
+.main-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:-100px;
+}
+
+.profile-img{
+  width:220px;height:220px;
+  border-radius:50%;
+  overflow:hidden;
+  border:8px solid #000;
+}
+.profile-img img{width:100%;height:100%;object-fit:cover;}
+
+.profile-info{margin-top:140px;}
+.profile-info h1{font-size:4.2rem;font-weight:800;}
+.profile-info p{margin-top:10px;color:#aaa;}
+
+.buttons{
+  display:flex;
+  gap:25px;
+  margin-top:165px;
+}
+.buttons button{
+  padding:18px 45px;
+  border-radius:18px;
+  border:1px solid #222;
+  background:#111;
+  color:#fff;
+  cursor:pointer;
+  transition:.3s;
+}
+.buttons button:hover{
+  background:#fff;
+  color:#000;
+}
+
+/* DISCORD CARD */
+.discord-card{
+  margin-top:165px;
+  width:420px;
+  background:#111;
+  border:1px solid #222;
+  border-radius:22px;
+  padding:20px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.discord-left{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+.discord-icon{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+}
+.discord-info{
+  display:flex;
+  flex-direction:column;
+}
+.discord-info span{
+  font-size:0.9rem;
+  color:#aaa;
+}
+.online-dot{
+  width:8px;
+  height:8px;
+  background:#43b581;
+  border-radius:50%;
+  display:inline-block;
+  margin-right:6px;
+}
+.join-btn{
+  padding:10px 22px;
+  border-radius:18px;
+  border:none;
+  background:#2f3136;
+  color:#fff;
+  cursor:pointer;
+  transition:.3s;
+}
+.join-btn:hover{
+  background:#fff;
+  color:#000;
+}
+
+/* PORTFOLIO */
+.portfolio-section{margin-top:320px;}
+.portfolio-title{
+  font-size:3rem;
+  text-align:center;
+  margin-bottom:70px;
+}
+.portfolio-grid{
+  display:flex;
+  flex-direction:column;
+  gap:50px;
+}
+.portfolio-grid img{
+  width:100%;
+  aspect-ratio:3.5/1;
+  object-fit:cover;
+  border-radius:25px;
+  cursor:pointer;
+  transition:.3s;
+}
+.portfolio-grid img:hover{
+  transform:scale(1.02);
+}
+
+/* REVIEWS */
+.reviews-section{margin-top:300px;}
+.reviews-title{
+  font-size:3rem;
+  text-align:center;
+  margin-bottom:80px;
+}
+.reviews-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+}
+.review-card{
+  background:#111;
+  border:1px solid #222;
+  border-radius:20px;
+  padding:30px;
+  transition:.3s;
+}
+.review-card:hover{
+  box-shadow:0 0 18px rgba(255,255,255,0.35);
+  border:1px solid #fff;
+  transform:translateY(-6px);
+}
+.review-header{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:15px;
+}
+.review-header img{
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  object-fit:cover;
+}
+.review-stars{
+  color:#FFD700;
+  margin-bottom:15px;
+}
+.review-text{
+  color:#ccc;
+  line-height:1.6;
+}
+
+/* PRICING */
+.pricing-section{margin-top:300px;}
+.pricing-title{
+  font-size:3rem;
+  text-align:center;
+  margin-bottom:20px;
+}
+.pricing-sub{
+  text-align:center;
+  color:#aaa;
+  margin-bottom:90px;
+}
+.pricing-row{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+.price-card{
+  width:360px;
+  background:#111;
+  border:1px solid #222;
+  border-radius:25px;
+  padding:40px;
+  transition:.3s;
+}
+.price-card:hover{
+  box-shadow:0 0 18px rgba(255,255,255,0.35);
+  border:1px solid #fff;
+  transform:translateY(-6px);
+}
+
+.price-card h3{margin-bottom:20px;}
+.price{font-size:3rem;font-weight:800;margin-bottom:15px;}
+.price span{font-size:1rem;color:#aaa;}
+.price-desc{color:#aaa;margin-bottom:30px;}
+.price-card ul{list-style:none;margin-bottom:40px;line-height:2;color:#ccc;}
+
+.price-card button{
+  width:100%;
+  padding:15px;
+  border-radius:15px;
+  border:none;
+  background:#2a2a2a;
+  color:#fff;
+  cursor:pointer;
+  transition:.3s;
+}
+.price-card button:hover{
+  background:#fff;
+  color:#000;
+}
+
+/* PREMIUM */
+.popular{
+  border:1px solid #3b82f6;
+  animation:premiumGlow 3s ease-in-out infinite;
+}
+@keyframes premiumGlow{
+  0%{ box-shadow:0 0 15px rgba(59,130,246,0.4); }
+  50%{ box-shadow:0 0 35px rgba(59,130,246,0.7); }
+  100%{ box-shadow:0 0 15px rgba(59,130,246,0.4); }
+}
+.popular ul li{color:#3b82f6;}
+.premium-btn{background:#3b82f6 !important;color:#fff;}
+.premium-btn:hover{background:#fff !important;color:#000 !important;}
+
+/* INDIVIDUAL SERVICES */
+.individual-services{margin-top:120px;text-align:center;}
+.individual-grid{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  flex-wrap:wrap;
+  margin-top:60px;
+}
+.mini-card{
+  width:180px;
+  background:#111;
+  border:1px solid #222;
+  border-radius:20px;
+  padding:30px;
+  color:#ccc;
+  transition:.3s;
+}
+.mini-card:hover{
+  box-shadow:0 0 18px rgba(255,255,255,0.35);
+  border:1px solid #fff;
+  transform:translateY(-6px);
+}
+
+/* FOOTER */
+.footer{
+  margin-top:200px;
+  padding:40px 10%;
+  border-top:1px solid #111;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  color:#666;
+  font-size:0.9rem;
+}
+.footer-left{
+  position:absolute;
+  left:10%;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#111;
+  border:1px solid #222;
+  padding:8px 16px;
+  border-radius:20px;
+}
+.eye-icon{opacity:0.7;}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div><strong>Flora Portfolio</strong></div>
+  <div>
+    <a href="#">home</a>
+    <a href="#portfolio">past work</a>
+    <a href="#reviews">reviews</a>
+    <a href="#pricing">pricing</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<div class="banner">
+  <img src="skyline.jpg">
+</div>
+
+<div class="main-row">
+  <div class="profile-img">
+    <img src="bmw.jpg">
+  </div>
+
+  <div class="profile-info">
+    <h1>Flora</h1>
+    <p>Designer | Developer</p>
+  </div>
+
+  <div class="buttons">
+    <button onclick="location.href='#portfolio'">Past Work</button>
+    <button onclick="location.href='#reviews'">Reviews</button>
+  </div>
+
+  <div class="discord-card">
+    <div class="discord-left">
+      <img src="logo.png" class="discord-icon">
+      <div class="discord-info">
+        <strong>Illuminate Studios</strong>
+        <span><span class="online-dot"></span><span id="member-count">Loading...</span></span>
+      </div>
+    </div>
+    <button class="join-btn" onclick="window.open('https://discord.gg/sx8nsjaCPz','_blank')">Join</button>
+  </div>
+</div>
+
+<!-- PORTFOLIO -->
+<div id="portfolio" class="portfolio-section">
+  <h2 class="portfolio-title">Past Work</h2>
+  <div class="portfolio-grid">
+    <img src="work1.png">
+    <img src="work2.png">
+    <img src="work3.png">
+    <img src="work4.png">
+    <img src="work5.png">
+    <img src="work6.png">
+    <img src="work7.png">
+    <img src="work8.png">
+    <img src="work9.png">
+    <img src="work10.png">
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<div id="reviews" class="reviews-section">
+  <h2 class="reviews-title">Client Reviews</h2>
+  <div class="reviews-grid">
+    <div class="review-card"><div class="review-header"><img src="review1.png"><strong>@burger0563</strong></div><div class="review-stars">★★★★★</div><div class="review-text">Flora completely transformed our branding. Everything feels premium and intentional.</div></div>
+
+    <div class="review-card"><div class="review-header"><img src="review2.png"><strong>@tylerthegoat1342</strong></div><div class="review-stars">★★★★★</div><div class="review-text">Extremely professional and creative. Clean execution and fast turnaround.</div></div>
+
+    <div class="review-card"><div class="review-header"><img src="review3.png"><strong>@connortheinventor1</strong></div><div class="review-stars">★★★★★</div><div class="review-text">The attention to detail is unreal. Highly recommend working with Flora.</div></div>
+
+    <div class="review-card"><div class="review-header"><img src="review4.png"><strong>@zidii</strong></div><div class="review-stars">★★★★★</div><div class="review-text">Smooth process from start to finish.</div></div>
+
+    <div class="review-card"><div class="review-header"><img src="review5.png"><strong>@fillerite</strong></div><div class="review-stars">★★★★★</div><div class="review-text">Flora understood our vision immediately and brought it to life better than imagined.</div></div>
+
+    <div class="review-card"><div class="review-header"><img src="review6.png"><strong>@stillrdtr</strong></div><div class="review-stars">★★★★★</div><div class="review-text">High quality, clean design, and super fast delivery.</div></div>
+
+    <div class="review-card"><div class="review-header"><img src="review7.png"><strong>@influentialevel</strong></div><div class="review-stars">★★★★★</div><div class="review-text">Professional experience from start to finish.</div></div>
+
+    <div class="review-card"><div class="review-header"><img src="review8.png"><strong>@sola</strong></div><div class="review-stars">★★★★★</div><div class="review-text">Creative, efficient, and reliable.</div></div>
+
+    <div class="review-card"><div class="review-header"><img src="review9.png"><strong>@blitzq</strong></div><div class="review-stars">★★★★★</div><div class="review-text">Insane quality and brand presence boost.</div></div>
+
+    <div class="review-card"><div class="review-header"><img src="review10.png"><strong>@oluvent</strong></div><div class="review-stars">★★★★★</div><div class="review-text">Strong design sense and great communication.</div></div>
+
+    <div class="review-card"><div class="review-header"><img src="review11.png"><strong>@trixxyrabbit</strong></div><div class="review-stars">★★★★★</div><div class="review-text">Delivered beyond expectations. Very polished work.</div></div>
+
+    <div class="review-card"><div class="review-header"><img src="review12.png"><strong>@mxhdiyar</strong></div><div class="review-stars">★★★★★</div><div class="review-text">Fast, professional, and incredibly creative.</div></div>
+
+
+  </div>
+</div>
+
+<!-- PRICING -->
+<div id="pricing" class="pricing-section">
+  <h2 class="pricing-title">Pricing Plans</h2>
+  <p class="pricing-sub">Choose the best plan for your project needs.</p>
+
+  <div class="pricing-row">
+
+    <div class="price-card">
+      <h3>Basic</h3>
+      <div class="price">500 <span>robux</span></div>
+      <p class="price-desc">Best for simple projects and personal starts.</p>
+      <ul>
+        <li>✔ 5 banners</li>
+        <li>✔ 1 footer</li>
+        <li>✔ 2 edits</li>
+        <li>✔ 1 generic banner</li>
+      </ul>
+      <button onclick="window.open('https://www.roblox.com/catalog/139923350525380/Basic-Bundle','_blank')">
+  Purchase Plan
+</button>
+    </div>
+
+    <div class="price-card popular">
+      <h3>Premium</h3>
+      <div class="price">3000 <span>robux</span></div>
+      <p class="price-desc">For growing projects requiring more power.</p>
+      <ul>
+        <li>✔ 25 banners</li>
+        <li>✔ Department banners (x3)</li>
+        <li>✔ 2 generic banners</li>
+        <li>✔ 3 footers</li>
+        <li>✔ 5 edits</li>
+        <li>✔ 20 emojis</li>
+      </ul>
+      <button class="premium-btn"
+onclick="window.open('https://www.roblox.com/catalog/122775243662916/Premium-Bundle','_blank')">
+  Purchase Plan
+</button>
+    </div>
+
+    <div class="price-card">
+      <h3>Essential</h3>
+      <div class="price">1000 <span>robux</span></div>
+      <p class="price-desc">Full scale solutions for larger teams.</p>
+      <ul>
+        <li>✔ 15 banners</li>
+        <li>✔ 2 generic banners</li>
+        <li>✔ 2 footers</li>
+        <li>✔ 3 edits</li>
+        <li>✔ 10 emojis</li>
+      </ul>
+      <button onclick="window.open('https://www.roblox.com/catalog/89120523981017/Essential-Bundle','_blank')">
+  Purchase Plan
+</button>
+    </div>
+
+  </div>
+
+  <div class="individual-services">
+    <h2>Individual Services</h2>
+    <div class="individual-grid">
+      <div class="mini-card">Per Livery<br><strong>130 rbx</strong></div>
+      <div class="mini-card">Per Photo<br><strong>100 rbx</strong></div>
+      <div class="mini-card">Per Embed<br><strong>100 rbx</strong></div>
+      <div class="mini-card">Per Banner<br><strong>100 rbx</strong></div>
+      <div class="mini-card">Per Footer<br><strong>75 rbx</strong></div>
+      <div class="mini-card">Per Emoji<br><strong>50 rbx</strong></div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-left">
+    <span class="eye-icon">👁</span>
+    <span id="visit-count">0</span>
+  </div>
+  <div>© 2026 All Rights Reserved - flora.himself</div>
+</footer>
+
+<script>
+let visits = localStorage.getItem("site_visits");
+if(!visits){ visits = 1; }
+else{ visits = parseInt(visits)+1; }
+localStorage.setItem("site_visits", visits);
+document.getElementById("visit-count").innerText = visits;
+
+fetch("https://discord.com/api/v10/invites/sx8nsjaCPz?with_counts=true")
+.then(res=>res.json())
+.then(data=>{
+  if(data.approximate_member_count){
+    document.getElementById("member-count").innerText =
+      data.approximate_presence_count+" Online • "+
+      data.approximate_member_count+" Members";
+  }
+})
+.catch(()=>{});
+</script>
+
+</body>
+</html>
+
+
+
+
+

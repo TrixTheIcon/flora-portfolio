@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Flora Admin</title>
+<style>
+body {
+    font-family:Arial;
+    background:#000;
+    color:white;
+    padding:40px;
+}
+input, textarea {
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    background:#111;
+    color:white;
+    border:1px solid #333;
+}
+button {
+    padding:10px 20px;
+    background:white;
+    color:black;
+    border:none;
+    cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<h1>Admin Panel</h1>
+
+<input type="password" id="password" placeholder="Enter Admin Password">
+<button onclick="unlock()">Unlock</button>
+
+<div id="editor" style="display:none;">
+
+<h3>Site Title</h3>
+<input id="siteTitle">
+
+<h3>Tagline</h3>
+<input id="tagline">
+
+<h3>Past Work</h3>
+<textarea id="workContent"></textarea>
+
+<h3>Prices</h3>
+<textarea id="priceContent"></textarea>
+
+<h3>Reviews</h3>
+<textarea id="reviewContent"></textarea>
+
+<button onclick="save()">Save Changes</button>
+
+</div>
+
+<script>
+const adminPassword = "flora123"; // CHANGE THIS
+
+function unlock() {
+    if(document.getElementById("password").value === adminPassword) {
+        document.getElementById("editor").style.display = "block";
+    } else {
+        alert("Wrong password.");
+    }
+}
+
+function save() {
+    localStorage.siteTitle = document.getElementById("siteTitle").value;
+    localStorage.tagline = document.getElementById("tagline").value;
+    localStorage.workContent = document.getElementById("workContent").value;
+    localStorage.priceContent = document.getElementById("priceContent").value;
+    localStorage.reviewContent = document.getElementById("reviewContent").value;
+    alert("Saved! Refresh main site.");
+}
+</script>
+
+</body>
+</html>
